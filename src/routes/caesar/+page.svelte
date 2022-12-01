@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="ts" context="module">
 	const caesar = (text: string, cycle: number): string => {
 		const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
 
@@ -15,7 +15,9 @@
 			return isUpperCase ? cycledCharacter.toUpperCase() : cycledCharacter;
 		}).join("")
 	}
+</script>
 
+<script lang="ts">
 	let input = ''
 	let amount = 0;
 
