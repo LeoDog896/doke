@@ -5,9 +5,7 @@
 	"image": "mcr.microsoft.com/devcontainers/typescript-node:18-bullseye",
 	"customizations": {
 		"vscode": {
-			"extensions": [
-				"svelte.svelte-vscode"
-			]
+			"extensions": ["svelte.svelte-vscode"]
 		}
 	}
 
