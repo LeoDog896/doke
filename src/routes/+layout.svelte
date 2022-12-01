@@ -13,7 +13,7 @@
 	<ul class="list">
 		{#each pages as page}
 			<li>
-				<a href={page}>{page}</a>
+				<a href={"/doke/" + page}>{page}</a>
 			</li>
 		{/each}
 	</ul>
