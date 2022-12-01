@@ -1,5 +1,9 @@
 <script lang="ts" context="module">
-	const caesar = (text: string, cycle: number): string => {
+	const caesar = (text: string, shift: number): string => {
+		if (shift < 0) {
+			shift = 26 + (shift % 26);
+		}
+		
 		const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
 
 		return text.split("").map(character => {
@@ -8,7 +12,7 @@
 
 			const isUpperCase = character == character.toUpperCase();
 
-			const cycledCharacter = alphabet[(alphabet.indexOf(lowerChar) + cycle) % alphabet.length];
+			const cycledCharacter = alphabet[(alphabet.indexOf(lowerChar) + shift) % alphabet.length];
 
 			console.log(character + cycledCharacter)
 
