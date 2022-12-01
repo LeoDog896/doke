@@ -1,4 +1,6 @@
 <script lang="ts">
+	import '../app.css'
+
 	import { getPages } from '$lib/pages'; // Path to the utility function
 
 	const { url } = import.meta;

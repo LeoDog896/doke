@@ -1,3 +1,13 @@
+<script lang="ts" context="module">
+	import type { PageInfo } from 'src/lib/pageInfo';
+
+	export const info: PageInfo = {
+		name: 'Reverse text',
+		description: 'Reverse any given text',
+		url: 'reverse'
+	};
+</script>
+
 <script lang="ts">
 	let input = '';
 	$: reverse = input.split("").reverse().join("")
