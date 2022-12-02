@@ -1,7 +1,7 @@
 <script lang="ts">
 	let toEncrypt = '';
 
-	$: encryptedResult = window.btoa(toEncrypt);
+	$: encryptedResult = globalThis.btoa(toEncrypt);
 
 	let toDecrypt = '';
 
@@ -9,7 +9,7 @@
 
 	$: {
 		try {
-			decryptedResult = window.atob(toDecrypt);
+			decryptedResult = globalThis.atob(toDecrypt);
 		} catch {
 			decryptedResult = 'Result could not be decrypted.';
 		}
