@@ -1,4 +1,9 @@
 <script lang="ts">
+	function invert<K extends string | number | symbol, V extends string | number | symbol>(obj: { [key in K]: V}): Record<V, K> {
+		const entries = Object.entries(obj) as [K, V][];
+		return Object.assign({}, ...entries.map(([a,b]) => ({ [b]: a })))
+	}
+
 	const morseReference: { [key: string]: string } = {
 		'.-': 'a',
 		'-...': 'b',
@@ -39,20 +44,33 @@
 		'/': ' '
 	};
 
-	let input = '';
+	const invertedMorseReference = invert<string, string>(morseReference);
 
-	function parseMorse(input: string): string {
-		return input
+	let toDecode = '';
+	let toEncode = '';
+
+	function decodeMorse(morse: string): string {
+		return morse
 			.split(' ')
 			.map((it) => morseReference[it])
 			.join('');
 	}
 
-	$: result = parseMorse(input);
+	function encodeMorse(input: string): string {
+		return input.split('').map(it => invertedMorseReference[it] ?? '').join(' ')
+	}
+
+	$: decoded = decodeMorse(toDecode);
+	$: encoded = encodeMorse(toEncode)
 </script>
+
+<h1>Morse Code Encoder</h1>
+<input bind:value={toEncode} placeholder="Enter input to encode">
+
+<p>{encoded}</p>
 
 <h1>Morse Code Decoder</h1>
 
-<input bind:value={input} placeholder="Enter input" />
+<input bind:value={toDecode} placeholder="Enter input to decode" />
 
-<p>{result}</p>
+<p>{decoded}</p>
