@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '../app.css'
+	import '../app.css';
 
 	import { getPages } from '$lib/pages'; // Path to the utility function
 
@@ -13,13 +13,13 @@
 	<ul class="list">
 		{#each pages as page}
 			<li>
-				<a href={"/doke/" + page}>{page}</a>
+				<a href={'/doke/' + page}>{page}</a>
 			</li>
 		{/each}
 	</ul>
 
 	<div class="content">
-		<slot></slot>
+		<slot />
 	</div>
 </div>
 
@@ -58,7 +58,7 @@
 			}
 		}
 	}
-	
+
 	.content {
 		margin: 3rem;
 	}

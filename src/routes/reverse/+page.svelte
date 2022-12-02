@@ -10,7 +10,7 @@
 
 <script lang="ts">
 	let input = '';
-	$: reverse = input.split("").reverse().join("")
+	$: reverse = input.split('').reverse().join('');
 </script>
 
 <h1>Reverse Text</h1>

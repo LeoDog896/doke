@@ -6,11 +6,10 @@
  * @returns Paths to pages excluding routes with dynamic parameters
  */
 export const getPages = (url: string, modules: Record<string, unknown>): string[] => {
-
 	const paths = Object.keys(modules)
-		.filter(path => path != "./+page.svelte")
+		.filter((path) => path != './+page.svelte')
 		.map((path) => path.replace(/\/\+page\.svelte/, ''))
-		.map((path) => path.replace(/\.\//, ''))
+		.map((path) => path.replace(/\.\//, ''));
 
 	return paths;
 };
