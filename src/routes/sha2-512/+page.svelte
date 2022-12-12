@@ -12,10 +12,23 @@
 	import sha512 from 'js-sha512';
 
 	let input = '';
+	let files: FileList;
+	let file;
 </script>
 
 <h1>{info.name}</h1>
 
 <input placeholder="Enter Input" bind:value={input} />
+<input name="file" type="file" bind:files />
 
-<p>{sha512(input)}</p>
+{#if files}
+	{#await Array.from(files)[0].arrayBuffer()}
+		<p>Loading buffer...</p>
+	{:then buffer}
+		<p>{sha512(new TextDecoder("utf-8").decode(new Uint8Array(buffer)))}</p>
+	{:catch error}
+		<pre>{error}</pre>
+	{/await}
+{:else}
+	<p>{sha512(input)}</p>
+{/if}
