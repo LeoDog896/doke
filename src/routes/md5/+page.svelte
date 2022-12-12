@@ -12,10 +12,25 @@
 	import md5 from 'md5';
 
 	let input = '';
+	let files: FileList;
+	let file;
+	//$: rawFileInput?.item(0)?.arrayBuffer().then(arrayBuffer => input = arrayBuffer.toString());
+	//$: console.log(rawFileInput?.item(0));
 </script>
 
 <h1>{info.name}</h1>
 
 <input placeholder="Enter Input" bind:value={input} />
+<input name="file" type="file" bind:files />
 
-<p>{md5(input)}</p>
+{#if files}
+	{#await Array.from(files)[0].arrayBuffer()}
+		<p>Loading buffer...</p>
+	{:then buffer}
+		<p>{md5(new TextDecoder("utf-8").decode(new Uint8Array(buffer)))}</p>
+	{:catch error}
+		<pre>{error}</pre>
+	{/await}
+{:else}
+	<p>{md5(input)}</p>
+{/if}
