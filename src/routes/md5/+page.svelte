@@ -14,8 +14,6 @@
 	let input = '';
 	let files: FileList;
 	let file;
-	//$: rawFileInput?.item(0)?.arrayBuffer().then(arrayBuffer => input = arrayBuffer.toString());
-	//$: console.log(rawFileInput?.item(0));
 </script>
 
 <h1>{info.name}</h1>
