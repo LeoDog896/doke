@@ -20,6 +20,7 @@
 <h1>{info.name}</h1>
 
 <input placeholder="Enter Input" bind:value={input} />
+<br><br>
 <input name="file" type="file" bind:files />
 
 {#if files}
