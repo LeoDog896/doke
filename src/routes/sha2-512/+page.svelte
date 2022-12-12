@@ -2,8 +2,8 @@
 	import type { PageInfo } from 'src/lib/pageInfo';
 
 	export const info: PageInfo = {
-		name: 'SHA2-512 Text Encryptor',
-		description: 'Easily encrypt text into SHA2-512',
+		name: 'SHA2-512 Hasher',
+		description: 'Easily hash text into SHA2-512',
 		url: 'sha2-512'
 	};
 </script>
