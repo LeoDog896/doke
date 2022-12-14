@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-	import { encode, decode } from "@leodog896/vigenere-cipher"
+	import { encode, decode } from '@leodog896/vigenere-cipher';
 </script>
 
 <script lang="ts">

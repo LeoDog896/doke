@@ -1,7 +1,9 @@
 <script lang="ts">
-	function invert<K extends string | number | symbol, V extends string | number | symbol>(obj: { [key in K]: V}): Record<V, K> {
+	function invert<K extends string | number | symbol, V extends string | number | symbol>(obj: {
+		[key in K]: V;
+	}): Record<V, K> {
 		const entries = Object.entries(obj) as [K, V][];
-		return Object.assign({}, ...entries.map(([a,b]) => ({ [b]: a })))
+		return Object.assign({}, ...entries.map(([a, b]) => ({ [b]: a })));
 	}
 
 	const morseReference: { [key: string]: string } = {
@@ -42,7 +44,7 @@
 		'----.': '9',
 		'-----': '0',
 		'.-...': '&',
-		'.----.': '\'',
+		'.----.': "'",
 		'-.--.-': '(',
 		'-.--.': ')',
 		'---...': ':',
@@ -70,15 +72,18 @@
 	}
 
 	function encodeMorse(input: string): string {
-		return input.split('').map(it => invertedMorseReference[it] ?? '').join(' ')
+		return input
+			.split('')
+			.map((it) => invertedMorseReference[it] ?? '')
+			.join(' ');
 	}
 
 	$: decoded = decodeMorse(toDecode);
-	$: encoded = encodeMorse(toEncode)
+	$: encoded = encodeMorse(toEncode);
 </script>
 
 <h1>Morse Code Encoder</h1>
-<input bind:value={toEncode} placeholder="Enter input to encode">
+<input bind:value={toEncode} placeholder="Enter input to encode" />
 
 <p>{encoded}</p>
 

@@ -4,7 +4,7 @@ import { sveltekit } from '@sveltejs/kit/vite';
 const config = {
 	plugins: [sveltekit()],
 	server: {
-		host: "0.0.0.0",
+		host: '0.0.0.0'
 	},
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']
