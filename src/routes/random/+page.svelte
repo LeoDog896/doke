@@ -9,17 +9,25 @@
 </script>
 
 <script lang="ts">
-	function getRandomNumbers(length: number): Uint8Array {
-		if (length <= 0) throw Error('Length must be greater than 0');
+	function getRandomNumbers(length: number): string {
+		try {
+			if (length <= 0) throw Error('Length must be greater than 0');
 
-		const arr = new Uint8Array(length);
+			const arr = new Uint8Array(length);
 
-		return crypto.getRandomValues(arr);
+			return crypto.getRandomValues(arr).join(", ");
+		} catch (e) {
+			return `An error occured trying to process this: ${e}`
+		}
 	}
 
-	let numbers = getRandomNumbers(8);
+	let length = 8;
+	let trigger = Symbol();
+	$: numbers = trigger && getRandomNumbers(Math.max(length, 1));
 </script>
 
-<button on:click={() => (numbers = getRandomNumbers(8))}>Generate random numbers</button>
+<input type="number" min=1 max=65536 bind:value={length}>
 
-<p>{numbers.join(', ')}</p>
+<button on:click={() => trigger = Symbol()}>Generate random numbers</button>
+
+<p>{numbers}</p>

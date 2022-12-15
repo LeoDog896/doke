@@ -2,8 +2,8 @@
 	import type { PageInfo } from 'src/lib/pageInfo';
 
 	export const info: PageInfo = {
-		name: 'MD5 Text Encryptor',
-		description: 'Easily encrypt text into MD5',
+		name: 'MD5 Encryptor',
+		description: 'Easily encrypt input into MD5',
 		url: 'md5'
 	};
 </script>
@@ -13,7 +13,6 @@
 
 	let input = '';
 	let files: FileList;
-	let file;
 </script>
 
 <h1>{info.name}</h1>

@@ -7,11 +7,16 @@
 	const modules = import.meta.glob('./**/*.svelte'); // Include subfolder
 
 	const pages = getPages(url, modules);
+
+	$: filteredPages = pages.filter(name => name.includes(searchValue.toLowerCase()))
+
+	let searchValue = '';
 </script>
 
 <div class="container">
 	<ul class="list">
-		{#each pages as page}
+		<input size={Math.max(...pages.map(it => it.length))} placeholder="Search..." type="text" bind:value={searchValue}/>
+		{#each filteredPages as page}
 			<li>
 				<a href={'/doke/' + page}>{page}</a>
 			</li>
@@ -31,6 +36,20 @@
 		height: 100%;
 	}
 
+	input {
+		background-color: rgba(0, 0, 0, 0);
+		border: 0;
+		color: white;
+		border-bottom: 2px solid #8C7AA9;
+		padding: 1rem;
+		font-size: 1.1rem;
+		width: auto;
+	}
+
+	::placeholder {
+		color: rgba(255, 255, 255, 0.5);
+	}
+
 	.container {
 		display: flex;
 		flex-direction: row;
@@ -43,8 +62,10 @@
 		padding: 0;
 		list-style-type: none;
 		height: 100%;
-		border-right: 1px solid gray;
+		border-right: 2px solid #8C7AA9;
 		display: block;
+		background-color: #7192BE;
+		color: white;
 
 		li {
 			display: block;
@@ -52,6 +73,7 @@
 
 			a {
 				display: block;
+				color: white;
 				width: 100%;
 				text-align: center;
 				text-decoration: none;
