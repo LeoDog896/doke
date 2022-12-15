@@ -40,7 +40,7 @@
 		background-color: rgba(0, 0, 0, 0);
 		border: 0;
 		color: white;
-		border-bottom: 2px solid #8C7AA9;
+		border-bottom: 2px solid white;
 		padding: 1rem;
 		font-size: 1.1rem;
 		width: auto;
@@ -55,6 +55,7 @@
 		flex-direction: row;
 		height: 100%;
 		width: 100%;
+		overflow: scroll;
 	}
 
 	.list {
@@ -62,7 +63,6 @@
 		padding: 0;
 		list-style-type: none;
 		height: 100%;
-		border-right: 2px solid #8C7AA9;
 		display: block;
 		background-color: #7192BE;
 		color: white;
@@ -83,5 +83,7 @@
 
 	.content {
 		margin: 3rem;
+		max-height: 100vh;
+		overflow: scroll;
 	}
 </style>
