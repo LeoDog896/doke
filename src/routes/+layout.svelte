@@ -84,6 +84,5 @@
 	.content {
 		margin: 3rem;
 		max-height: 100vh;
-		overflow: scroll;
 	}
 </style>
