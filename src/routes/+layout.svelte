@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 
+	import Fuse from 'fuse.js';
 	import { getPages } from '$lib/pages'; // Path to the utility function
 
 	const { url } = import.meta;
@@ -8,7 +9,12 @@
 
 	const pages = getPages(url, modules);
 
-	$: filteredPages = pages.filter(name => name.includes(searchValue.toLowerCase()))
+	const fuse = new Fuse(pages.map(page => ({ name: page })), {
+		threshold: 0.5,
+		keys: ['name']
+	});
+
+	$: filteredPages = searchValue.length === 0 ? pages : fuse.search(searchValue).map(it => it.item.name); 
 
 	let searchValue = '';
 </script>
