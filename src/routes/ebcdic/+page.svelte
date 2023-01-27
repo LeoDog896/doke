@@ -92,3 +92,9 @@
 <input bind:value={toDecode} placeholder="Enter Input" />
 <p>{decode(toDecode)}</p>
 
+<h1>About EBCDIC</h1>
+<p>
+	EBCDIC is a character encoding standard for use with binary coded decimal (BCD) and other binary coded character sets. It is most commonly used for data interchange between mainframe computers and peripherals, such as magnetic tape units, printers, and punched cards.
+	It's much older than ASCII, and is still used in some places.
+	For more information, consult IBM: <a href="https://www.ibm.com/docs/en/zos-basic-skills?topic=mainframe-ebcdic-character-set">https://www.ibm.com/docs/en/zos-basic-skills?topic=mainframe-ebcdic-character-set</a>
+</p>
