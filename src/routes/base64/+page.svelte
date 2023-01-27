@@ -18,12 +18,12 @@
 
 <h1>Base64 encryption</h1>
 
-<input bind:value={toEncrypt} />
+<input bind:value={toEncrypt} placeholder="Enter Input" />
 
 <p>{encryptedResult}</p>
 
 <h1>Base64 decryption</h1>
 
-<input bind:value={toDecrypt} />
+<input bind:value={toDecrypt} placeholder="Enter Input" />
 
 <p>{decryptedResult}</p>
