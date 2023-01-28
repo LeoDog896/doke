@@ -31,11 +31,15 @@ const englishFrequencyTable: FrequencyTable = {
 
 
 interface Options {
-	
+	frequencyTable: FrequencyTable;
+}
+
+const englishOptions = {
+	frequencyTable: englishFrequencyTable
 }
 
 // Scores a word based on how "english" it is
-export function score(text: string) {
+export function score(text: string, options = englishOptions) {
 	// first, transform the text into lower-case letters only
 	const letters = text.toLowerCase().replace(/[^a-z]/g, '').split('');
 
@@ -57,7 +61,7 @@ export function score(text: string) {
 
 	// calculate the sum of the differences between the text's letter frequencies and the english letter frequencies
 	const score = Object.entries(textFrequency).reduce((sum, [letter, frequency]) => {
-		return sum + Math.abs(frequency - (englishFrequencyTable[letter] || 0));
+		return sum + Math.abs(frequency - (options.frequencyTable[letter] || 0));
 	}, 0);
 
 	return score;
