@@ -1,4 +1,6 @@
 <script lang="ts" context="module">
+	import { score } from "$lib/analysis";
+
 	const caesar = (text: string, shift: number): string => {
 		if (shift < 0) {
 			shift = 26 + (shift % 26);
@@ -16,8 +18,6 @@
 
 				const cycledCharacter = alphabet[(alphabet.indexOf(lowerChar) + shift) % alphabet.length];
 
-				console.log(character + cycledCharacter);
-
 				return isUpperCase ? cycledCharacter.toUpperCase() : cycledCharacter;
 			})
 			.join('');
@@ -29,6 +29,18 @@
 	let amount = 0;
 
 	$: result = caesar(input, amount);
+
+	let scores = [];
+
+	$: {
+		scores = Array.from({ length: 26 }, (_, i) => {
+			return {
+				shift: i,
+				text: caesar(input, i),
+				score: score(caesar(input, i))
+			};
+		}).sort((a, b) => b.score - a.score);
+	}
 </script>
 
 <h1>Caesar Cipher</h1>
@@ -37,3 +49,9 @@
 <input bind:value={amount} type="number" />
 
 <p>{result}</p>
+
+<h2>Automatic Decoding</h2>
+
+{#each scores as { shift, score, text }}
+	<p>{text} ({shift}): {score}</p>
+{/each}
