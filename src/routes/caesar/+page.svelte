@@ -52,6 +52,10 @@
 
 <h2>Automatic Decoding</h2>
 
-{#each scores as { shift, score, text }}
-	<p>{text} ({shift}): {score}</p>
-{/each}
+{#if input}
+	{#each scores as { shift, score, text }}
+		<p>{text} ({shift}): {score}</p>
+	{/each}
+{:else}
+	<p>Enter some text above to see automatic decoding</p>
+{/if}
