@@ -6,15 +6,13 @@
 		description: 'Easily hash text into SHA1',
 		url: 'sha1'
 	};
-
-	let files: FileList;
-	let file;
 </script>
 
 <script lang="ts">
 	import sha1 from 'sha1';
 
 	let input = '';
+	let files: FileList;
 </script>
 
 <h1>{info.name}</h1>
