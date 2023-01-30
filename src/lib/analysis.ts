@@ -33,7 +33,7 @@ interface Options {
 	frequencyTable: FrequencyTable;
 }
 
-const englishOptions = {
+const englishOptions: Options = {
 	frequencyTable: englishFrequencyTable
 };
 

@@ -1,6 +1,8 @@
 <script lang="ts">
 	import '../app.css';
 
+	import { page as currentPage } from '$app/stores';
+
 	import Fuse from 'fuse.js';
 	import { getPages } from '$lib/pages'; // Path to the utility function
 
@@ -33,7 +35,11 @@
 		/>
 		{#each filteredPages as page}
 			<li>
-				<a href={'/doke/' + page}>{page}</a>
+				<a class={
+					$currentPage.url.href.includes(page)
+						? 'active'
+						: ''
+				} href={'/doke/' + page}>{page}</a>
 			</li>
 		{/each}
 	</ul>
@@ -63,6 +69,10 @@
 
 	::placeholder {
 		color: rgba(255, 255, 255, 0.5);
+	}
+
+	.active {
+		background-color: #3b5998;
 	}
 
 	.container {
