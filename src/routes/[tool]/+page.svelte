@@ -4,4 +4,6 @@
 	export let data: PageData;
 </script>
 
-<svelte:component this={data.module.default} />
+{#each data.modules as module}
+	<svelte:component this={module.default} />
+{/each}
