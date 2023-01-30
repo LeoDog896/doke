@@ -15,9 +15,9 @@
 
 			const arr = new Uint8Array(length);
 
-			return crypto.getRandomValues(arr).join(", ");
+			return crypto.getRandomValues(arr).join(', ');
 		} catch (e) {
-			return `An error occured trying to process this: ${e}`
+			return `An error occured trying to process this: ${e}`;
 		}
 	}
 
@@ -26,8 +26,8 @@
 	$: numbers = trigger && getRandomNumbers(Math.max(length, 1));
 </script>
 
-<input type="number" min=1 max=65536 bind:value={length}>
+<input type="number" min="1" max="65536" bind:value={length} />
 
-<button on:click={() => trigger = Symbol()}>Generate random numbers</button>
+<button on:click={() => (trigger = Symbol())}>Generate random numbers</button>
 
 <p>{numbers}</p>

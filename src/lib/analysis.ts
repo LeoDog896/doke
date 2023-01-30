@@ -2,7 +2,7 @@ type FrequencyTable = Record<string, number>;
 
 const englishFrequencyTable: FrequencyTable = {
 	e: 12.02,
-	t: 9.10,
+	t: 9.1,
 	a: 8.12,
 	o: 7.68,
 	i: 7.31,
@@ -15,7 +15,7 @@ const englishFrequencyTable: FrequencyTable = {
 	u: 2.88,
 	c: 2.71,
 	m: 2.61,
-	f: 2.30,
+	f: 2.3,
 	y: 2.11,
 	w: 2.09,
 	g: 2.03,
@@ -25,10 +25,9 @@ const englishFrequencyTable: FrequencyTable = {
 	k: 0.69,
 	x: 0.17,
 	q: 0.11,
-	j: 0.10,
+	j: 0.1,
 	z: 0.07
 };
-
 
 interface Options {
 	frequencyTable: FrequencyTable;
@@ -36,12 +35,15 @@ interface Options {
 
 const englishOptions = {
 	frequencyTable: englishFrequencyTable
-}
+};
 
 // Scores a word based on how "english" it is
 export function score(text: string, options = englishOptions) {
 	// first, transform the text into lower-case letters only
-	const letters = text.toLowerCase().replace(/[^a-z]/g, '').split('');
+	const letters = text
+		.toLowerCase()
+		.replace(/[^a-z]/g, '')
+		.split('');
 
 	if (letters.length === 0) {
 		return 0;

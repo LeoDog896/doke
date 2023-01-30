@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { score } from "$lib/analysis";
+	import { score } from '$lib/analysis';
 	let toScore = '';
 </script>
 

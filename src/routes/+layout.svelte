@@ -9,19 +9,28 @@
 
 	const pages = getPages(url, modules);
 
-	const fuse = new Fuse(pages.map(page => ({ name: page })), {
-		threshold: 0.5,
-		keys: ['name']
-	});
+	const fuse = new Fuse(
+		pages.map((page) => ({ name: page })),
+		{
+			threshold: 0.5,
+			keys: ['name']
+		}
+	);
 
-	$: filteredPages = searchValue.length === 0 ? pages : fuse.search(searchValue).map(it => it.item.name); 
+	$: filteredPages =
+		searchValue.length === 0 ? pages : fuse.search(searchValue).map((it) => it.item.name);
 
 	let searchValue = '';
 </script>
 
 <div class="container">
 	<ul class="list">
-		<input size={Math.max(...pages.map(it => it.length))} placeholder="Search..." type="text" bind:value={searchValue}/>
+		<input
+			size={Math.max(...pages.map((it) => it.length))}
+			placeholder="Search..."
+			type="text"
+			bind:value={searchValue}
+		/>
 		{#each filteredPages as page}
 			<li>
 				<a href={'/doke/' + page}>{page}</a>
@@ -70,7 +79,7 @@
 		list-style-type: none;
 		height: 100%;
 		display: block;
-		background-color: #7192BE;
+		background-color: #7192be;
 		color: white;
 
 		li {

@@ -1,23 +1,23 @@
 <script lang="ts">
-	let input = ''
+	let input = '';
 
 	function atbash(text: string): string {
-		const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
-		const reversedAlphabet = [...alphabet].reverse()
+		const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+		const reversedAlphabet = [...alphabet].reverse();
 
 		return text
 			.split('')
 			.map((character) => {
-				const lowerChar = character.toLowerCase()
-				if (!alphabet.includes(lowerChar)) return character
+				const lowerChar = character.toLowerCase();
+				if (!alphabet.includes(lowerChar)) return character;
 
-				const isUpperCase = character == character.toUpperCase()
+				const isUpperCase = character == character.toUpperCase();
 
-				const cycledCharacter = reversedAlphabet[alphabet.indexOf(lowerChar)]
+				const cycledCharacter = reversedAlphabet[alphabet.indexOf(lowerChar)];
 
-				return isUpperCase ? cycledCharacter.toUpperCase() : cycledCharacter
+				return isUpperCase ? cycledCharacter.toUpperCase() : cycledCharacter;
 			})
-			.join('')
+			.join('');
 	}
 </script>
 

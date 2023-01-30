@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-	import { score } from "$lib/analysis";
+	import { score } from '$lib/analysis';
 
 	const caesar = (text: string, shift: number): string => {
 		if (shift < 0) {
