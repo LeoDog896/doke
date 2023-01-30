@@ -4,12 +4,9 @@
 	import { page as currentPage } from '$app/stores';
 
 	import Fuse from 'fuse.js';
-	import { getPages } from '$lib/pages'; // Path to the utility function
+	const modules = Object.keys(import.meta.glob('../lib/**/*.svelte'));
 
-	const { url } = import.meta;
-	const modules = import.meta.glob('./**/*.svelte'); // Include subfolder
-
-	const pages = getPages(url, modules);
+	const pages = modules.map((it) => it.split('/')[3]);
 
 	const fuse = new Fuse(
 		pages.map((page) => ({ name: page })),
