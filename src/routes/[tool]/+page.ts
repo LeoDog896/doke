@@ -1,11 +1,5 @@
-import type { PageLoad } from "./$types"
-
-export const load: PageLoad = async ({ params }) => {
-	const files = import.meta.glob("../../lib/tools/**/*.svelte");
-
-	const filteredFiles = Object.entries(files).filter(([key, _]) => key.includes(params.tool))
-
+export const load = async ({ params }) => {
 	return {
-		components: filteredFiles
-	}
+		module: await import(`../../lib/tools/${params.tool}/index.ts`)
+	};
 };

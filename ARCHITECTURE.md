@@ -14,7 +14,7 @@ This is the one that is similar to the likes of [dcode.fr](https://dcode.fr), an
 
 ### Graph-Based
 
-This is the one that is similar to the likes of [CyberChef](https://gchq.github.io/CyberChef/), and group tools in a graph-like manner. This is useful for more advanced usage, as it allows for complex workflows to be created. 
+This is the one that is similar to the likes of [CyberChef](https://gchq.github.io/CyberChef/), and group tools in a graph-like manner. This is useful for more advanced usage, as it allows for complex workflows to be created.
 
 ### Script-Based
 

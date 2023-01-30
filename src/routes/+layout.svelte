@@ -32,11 +32,9 @@
 		/>
 		{#each filteredPages as page}
 			<li>
-				<a class={
-					$currentPage.url.href.includes(page)
-						? 'active'
-						: ''
-				} href={'/doke/' + page}>{page}</a>
+				<a class={$currentPage.url.href.includes(page) ? 'active' : ''} href={'/doke/' + page}
+					>{page}</a
+				>
 			</li>
 		{/each}
 	</ul>
