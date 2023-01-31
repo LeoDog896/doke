@@ -81,7 +81,7 @@
 		margin: 0;
 		padding: 0;
 		list-style-type: none;
-		max-height: 100%;
+		height: 100vh;
 		overflow-y: scroll;
 		overflow-x: hidden;
 		display: block;
