@@ -1,8 +1,9 @@
 <script lang="ts">
+	import { englishOptions } from "$lib/english";
 	let input = '';
 
 	function atbash(text: string): string {
-		const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+		const alphabet = englishOptions.alphabet;
 		const reversedAlphabet = [...alphabet].reverse();
 
 		return text
