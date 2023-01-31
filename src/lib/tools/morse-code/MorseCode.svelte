@@ -73,6 +73,7 @@
 
 	function encodeMorse(input: string): string {
 		return input
+			.toLowerCase()
 			.split('')
 			.map((it) => invertedMorseReference[it] ?? '')
 			.join(' ');
