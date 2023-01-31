@@ -1,12 +1,13 @@
 <script lang="ts" context="module">
 	import { score } from '$lib/analysis';
+	import { englishOptions } from '$lib/english';
 
 	const caesar = (text: string, shift: number): string => {
 		if (shift < 0) {
 			shift = 26 + (shift % 26);
 		}
 
-		const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+		const alphabet = englishOptions.alphabet;
 
 		return text
 			.split('')
@@ -30,14 +31,20 @@
 
 	$: result = caesar(input, amount);
 
-	let scores = [];
+	interface Score {
+		shift: number;
+		text: string;
+		score: number;
+	}
+
+	let scores: Score[] = [];
 
 	$: {
 		scores = Array.from({ length: 26 }, (_, i) => {
 			return {
 				shift: i,
 				text: caesar(input, i),
-				score: score(caesar(input, i))
+				score: score(caesar(input, i), englishOptions)
 			};
 		}).sort((a, b) => b.score - a.score);
 	}
