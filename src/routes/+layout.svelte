@@ -73,16 +73,17 @@
 	.container {
 		display: flex;
 		flex-direction: row;
-		height: 100%;
-		width: 100%;
-		overflow: scroll;
+		max-height: 100%;
+		max-width: 100%;
 	}
 
 	.list {
 		margin: 0;
 		padding: 0;
 		list-style-type: none;
-		height: 100%;
+		max-height: 100%;
+		overflow-y: scroll;
+		overflow-x: hidden;
 		display: block;
 		background-color: #7192be;
 		color: white;
@@ -104,5 +105,7 @@
 	.content {
 		margin: 3rem;
 		max-height: 100vh;
+		width: 100%;
+		overflow: auto;
 	}
 </style>
