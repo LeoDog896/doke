@@ -26,8 +26,9 @@
 	$: numbers = trigger && getRandomNumbers(Math.max(length, 1));
 </script>
 
-<input type="number" min="1" max="65536" bind:value={length} />
-
+<label for="length">Length:</label>
+<input type="number" id="length" min="1" max="65536" bind:value={length} />
+<br/><br/>
 <button on:click={() => (trigger = Symbol())}>Generate random numbers</button>
 
 <p>{numbers}</p>
