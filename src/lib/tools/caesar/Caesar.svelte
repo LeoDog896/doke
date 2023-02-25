@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
-	import { score } from '$lib/analysis';
 	import { englishOptions } from '$lib/english';
+	import AutoDecoder from '$lib/analysis/AutoDecoder.svelte';
 
 	const caesar = (text: string, shift: number): string => {
 		if (shift < 0) {
@@ -31,22 +31,8 @@
 
 	$: result = caesar(input, amount);
 
-	interface Score {
-		shift: number;
-		text: string;
-		score: number;
-	}
-
-	let scores: Score[] = [];
-
-	$: {
-		scores = Array.from({ length: 26 }, (_, i) => {
-			return {
-				shift: i,
-				text: caesar(input, i),
-				score: score(caesar(input, i), englishOptions)
-			};
-		}).sort((a, b) => b.score - a.score);
+	function paramGenerator(input: string): [string, number][] {
+		return Array.from({ length: 26 }, (_, i) => i).map(i => [input, i])
 	}
 </script>
 
@@ -57,12 +43,10 @@
 
 <p>{result}</p>
 
-<h2>Automatic Decoding</h2>
-
-{#if input}
-	{#each scores as { shift, score, text }}
-		<p>{text} ({shift}): {score}</p>
-	{/each}
-{:else}
-	<p>Enter some text above to see automatic decoding</p>
-{/if}
+<AutoDecoder
+	input={input}
+	options={englishOptions}
+	generator={caesar}
+	{paramGenerator}
+	paramShower={([input, amount]) => `Shift: ${amount}`}
+/>
