@@ -4,7 +4,7 @@
 	import { page as currentPage } from '$app/stores';
 
 	import Fuse from 'fuse.js';
-	const modules = Object.keys(import.meta.glob('../lib/**/*.svelte'));
+	const modules = Object.keys(import.meta.glob('../lib/tools/**/*.svelte'));
 
 	const pages = modules.map((it) => it.split('/')[3]);
 
