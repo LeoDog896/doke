@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { englishOptions } from "$lib/english";
+	import AutoDecoder from "$lib/analysis/AutoDecoder.svelte";
 
 	let input = '';
 	let slope: number = 1;
@@ -25,7 +26,38 @@
 
 				const isUpperCase = character == character.toUpperCase();
 
-				const cycledCharacter = alphabet[(alphabet.indexOf(lowerChar) * slope + intercept) % alphabet.length];
+				const cycledCharacter = alphabet
+				[(alphabet.indexOf(lowerChar) * slope + intercept) % alphabet.length];
+
+				return isUpperCase ? cycledCharacter.toUpperCase() : cycledCharacter;
+			})
+			.join('');
+	}
+
+	function xgcd(a: number, b: number): [number, number, number] { 
+		if (b == 0) {
+			return [1, 0, a];
+		}
+
+		let [x, y, d] = xgcd(b, a % b);
+		return [y, x-y*Math.floor(a/b), d];
+	}
+
+	function decrypt(text: string, slope: number, intercept: number): string {
+		const alphabet = englishOptions.alphabet;
+
+		return text
+			.split('')
+			.map((character) => {
+				const lowerChar = character.toLowerCase();
+				if (!alphabet.includes(lowerChar)) return character;
+
+				const isUpperCase = character == character.toUpperCase();
+
+				const modularMultiplicative = xgcd(slope, alphabet.length)[0];
+				const cycledCharacter = alphabet[
+					modularMultiplicative * (alphabet.indexOf(lowerChar) - intercept) % alphabet.length
+				];
 
 				return isUpperCase ? cycledCharacter.toUpperCase() : cycledCharacter;
 			})
@@ -50,7 +82,8 @@
 <input id="input" bind:value={input} placeholder="Enter Input" />
 
 {#if verifySlope(slope)}
-	<p>{encrypt(input, slope, intercept)}</p>
+	<p>encrypted: {encrypt(input, slope, intercept)}</p>
+	<p>decrypted: {decrypt(encrypt(input, slope, intercept), slope, intercept)}</p>
 {:else}
 	{@const length = englishOptions.alphabet.length}
 	{#if slope < 0}
@@ -58,6 +91,14 @@
 	{:else if slope > length}
 		<p>Slope must be less than {length}</p>
 	{:else}
-		<p>Slope must be coprime with {length}</p>
+		<p>Slope must be <abbr title="two numbers with a highest common factor of 1">coprime</abbr> with {length}</p>
 	{/if}
 {/if}
+
+<!-- <AutoDecoder
+	input={input}
+	options={englishOptions}
+	generator={encrypt}
+	paramGenerator={([input]) => [[input, slope, intercept]]}
+	paramShower={([input, slope, intercept]) => `Slope: ${slope}, Intercept: ${intercept}`}
+/> -->
