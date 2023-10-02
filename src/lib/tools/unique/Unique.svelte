@@ -8,4 +8,12 @@
 
 <input bind:value={toFind} placeholder="Enter Input" />
 
-<p>Chars: "{chars}"</p>
+<p>Chars: <code>{chars}</code></p>
+
+<style>
+	code {
+		background: #eee;
+		padding: 0.25rem;
+		border-radius: 0.25rem;
+	}
+</style>
