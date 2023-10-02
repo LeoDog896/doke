@@ -32,7 +32,7 @@
 	$: result = caesar(input, amount);
 
 	function paramGenerator(input: string): [string, number][] {
-		return Array.from({ length: 26 }, (_, i) => i).map(i => [input, i])
+		return Array.from({ length: 26 }, (_, i) => i).map((i) => [input, i]);
 	}
 </script>
 
@@ -44,7 +44,7 @@
 <p>{result}</p>
 
 <AutoDecoder
-	input={input}
+	{input}
 	options={englishOptions}
 	generator={caesar}
 	{paramGenerator}

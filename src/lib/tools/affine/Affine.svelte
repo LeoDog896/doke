@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { englishOptions } from "$lib/english";
+	import { englishOptions } from '$lib/english';
 
 	let input = '';
 	let slope: number = 1;
@@ -25,14 +25,13 @@
 
 				const isUpperCase = character == character.toUpperCase();
 
-				const cycledCharacter = alphabet[(alphabet.indexOf(lowerChar) * slope + intercept) % alphabet.length];
+				const cycledCharacter =
+					alphabet[(alphabet.indexOf(lowerChar) * slope + intercept) % alphabet.length];
 
 				return isUpperCase ? cycledCharacter.toUpperCase() : cycledCharacter;
 			})
 			.join('');
 	}
-
-
 </script>
 
 <h1>Affine Cipher</h1>
@@ -40,11 +39,11 @@
 <p>Enter a message and two numbers to encode it with the Affine Cipher</p>
 
 <label for="slope">Slope:</label>
-<input bind:value={slope} min=0 type="number" id="slope" placeholder="Enter Slope" />
-<br/><br/>
+<input bind:value={slope} min="0" type="number" id="slope" placeholder="Enter Slope" />
+<br /><br />
 <label for="intercept">Intercept:</label>
 <input bind:value={intercept} type="number" id="intercept" placeholder="Enter Intercept" />
-<br/><br/><br/>
+<br /><br /><br />
 
 <label for="input">Input:</label>
 <input id="input" bind:value={input} placeholder="Enter Input" />

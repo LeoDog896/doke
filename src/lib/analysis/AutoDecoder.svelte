@@ -1,14 +1,14 @@
 <script lang="ts">
-	import type { Options } from "$lib/analysis";
-	import { score } from "$lib/analysis";
+	import type { Options } from '$lib/analysis';
+	import { score } from '$lib/analysis';
 
 	type T = $$Generic<unknown[]>;
 
 	export let input: string;
-	export let options: Options
+	export let options: Options;
 	export let generator: (...args: T) => string;
 	export let paramGenerator: (input: string) => T[];
-	export let paramShower: (params: T) => string = params => params.join(", ");
+	export let paramShower: (params: T) => string = (params) => params.join(', ');
 
 	interface Item {
 		params: T;
@@ -16,17 +16,19 @@
 		score: number;
 	}
 
-	let items: Item[] = []
+	let items: Item[] = [];
 	$: if (input) {
-		items = paramGenerator(input).map(params => {
-			const result = generator(...params)
+		items = paramGenerator(input)
+			.map((params) => {
+				const result = generator(...params);
 
-			return {
-				params,
-				text: result,
-				score: score(result, options)
-			}
-		}).sort((a, b) => b.score - a.score)
+				return {
+					params,
+					text: result,
+					score: score(result, options)
+				};
+			})
+			.sort((a, b) => b.score - a.score);
 	}
 </script>
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 	const md5 = (text: string) => /^[a-f0-9]{32}$/.test(text);
 
-	let input = ''
+	let input = '';
 </script>
 
 <h1>Identify</h1>

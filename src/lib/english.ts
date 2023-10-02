@@ -1,4 +1,4 @@
-import type { FrequencyTable, Options } from "./analysis";
+import type { FrequencyTable, Options } from './analysis';
 
 const englishFrequencyTable: FrequencyTable = {
 	e: 12.02,
@@ -31,5 +31,5 @@ const englishFrequencyTable: FrequencyTable = {
 
 export const englishOptions: Options = {
 	frequencyTable: englishFrequencyTable,
-	alphabet: "abcdefghijklmnopqrstuvwxyz".split("")
+	alphabet: 'abcdefghijklmnopqrstuvwxyz'.split('')
 };

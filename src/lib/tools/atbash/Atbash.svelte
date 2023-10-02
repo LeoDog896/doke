@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { englishOptions } from "$lib/english";
+	import { englishOptions } from '$lib/english';
 	let input = '';
 
 	function atbash(text: string): string {

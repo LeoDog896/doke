@@ -28,7 +28,7 @@
 
 <label for="length">Length:</label>
 <input type="number" id="length" min="1" max="65536" bind:value={length} />
-<br/><br/>
+<br /><br />
 <button on:click={() => (trigger = Symbol())}>Generate random numbers</button>
 
 <p>{numbers}</p>
