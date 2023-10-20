@@ -1,13 +1,9 @@
 <script lang="ts">
 	let toEncrypt = '';
-
 	$: encryptedResult = globalThis.encodeURI(toEncrypt);
-	
 
 	let toDecrypt = '';
-
 	let decryptedResult = '';
-
 	$: {
 		try {
 			decryptedResult = globalThis.decodeURI(toDecrypt);
