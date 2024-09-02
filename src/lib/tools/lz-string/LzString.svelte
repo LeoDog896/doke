@@ -5,13 +5,12 @@
 		compressToEncodedURIComponent,
 		compressToUTF16,
 		compressToUint8Array,
-		
 		decompress,
 		decompressFromBase64,
 		decompressFromEncodedURIComponent,
 		decompressFromUTF16,
 		decompressFromUint8Array
-	} from "lz-string";
+	} from 'lz-string';
 </script>
 
 <script lang="ts">
@@ -24,34 +23,38 @@
 			compress,
 			decompress
 		},
-		'base64': {
+		base64: {
 			compress: compressToBase64,
 			decompress: decompressFromBase64
 		},
-		'encodedURIComponent': {
+		encodedURIComponent: {
 			compress: compressToEncodedURIComponent,
 			decompress: decompressFromEncodedURIComponent
 		},
-		'utf16': {
+		utf16: {
 			compress: compressToUTF16,
 			decompress: decompressFromUTF16
 		},
-		'uint8array': {
-			compress: str => [...compressToUint8Array(str)].join(" "),
-			decompress: str => decompressFromUint8Array(new Uint8Array(str.split(" ").map(int => parseInt(int))))
+		uint8array: {
+			compress: (str) => [...compressToUint8Array(str)].join(' '),
+			decompress: (str) =>
+				decompressFromUint8Array(new Uint8Array(str.split(' ').map((int) => parseInt(int))))
 		}
-	} satisfies Record<string, {
-		compress: (str: string) => string,
-		decompress: (str: string) => string
-	}>
+	} satisfies Record<
+		string,
+		{
+			compress: (str: string) => string;
+			decompress: (str: string) => string;
+		}
+	>;
 
 	const options = Object.keys(pairedOptions);
 
 	let option: keyof typeof pairedOptions = 'no-encoding';
-	$: optionPair = pairedOptions[option]
+	$: optionPair = pairedOptions[option];
 
-	$: encoded = optionPair.compress(toEncode)
-	$: decoded = optionPair.decompress(toDecode)
+	$: encoded = optionPair.compress(toEncode);
+	$: decoded = optionPair.decompress(toDecode);
 </script>
 
 <select bind:value={option}>
@@ -75,5 +78,7 @@
 <h1>About lz-string</h1>
 
 <p>
-	<a href="https://github.com/pieroxy/lz-string">lz-string</a> is an implementation of <a href="https://glinscott.github.io/lz/index.html">lz</a>-based compression for different languages.
+	<a href="https://github.com/pieroxy/lz-string">lz-string</a> is an implementation of
+	<a href="https://glinscott.github.io/lz/index.html">lz</a>-based compression for different
+	languages.
 </p>
