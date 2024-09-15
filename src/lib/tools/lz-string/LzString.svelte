@@ -1,5 +1,7 @@
 <script lang="ts" context="module">
-	import {
+	import * as lz from 'lz-string';
+	
+	const {
 		compress,
 		compressToBase64,
 		compressToEncodedURIComponent,
@@ -10,7 +12,7 @@
 		decompressFromEncodedURIComponent,
 		decompressFromUTF16,
 		decompressFromUint8Array
-	} from 'lz-string';
+	} = lz;
 </script>
 
 <script lang="ts">
