@@ -55,8 +55,8 @@
 	let option: keyof typeof pairedOptions = 'no-encoding';
 	$: optionPair = pairedOptions[option];
 
-	$: encoded = optionPair.compress(toEncode);
-	$: decoded = optionPair.decompress(toDecode);
+	$: encoded = optionPair.compress?.(toEncode) ?? "";
+	$: decoded = optionPair.decompress?.(toDecode) ?? "";
 </script>
 
 <select bind:value={option}>
